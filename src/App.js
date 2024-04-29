@@ -7,11 +7,14 @@ Route,
 import Homepage from './pages/homepage/Homepage';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import Navbar from './components/Navbar';
 
 
 function App() {
   return (
     <Router>
+        <Navbar/>
+
       <Routes>
         <Route path='/' element={<Homepage/>} />
         <Route path='/register' element={<Register/>} />
