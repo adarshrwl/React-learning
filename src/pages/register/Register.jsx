@@ -1,7 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 const Register = () => {
-  return (
+  //Coding Section
+ //Make a state variable
+ //Format(variable Name,Changing Varibale Name)
+ const[firstName,setFirstName]=useState('')
+ const[lirstName,setLastName]=useState('')
+ const[email,setEmail]=useState('')
+ const[password,setPassword]=useState('')
+ const[confirmPassword,setConfirmPassword]=useState('')
+return (
 
 <>
 <div className='m-3'>
@@ -9,7 +17,7 @@ const Register = () => {
         Create an account!!!  
       </h1>
 
-      <form >
+      <form className='w-50' >
         <label className='mt-3'>First Name:</label>
         <input type="text" className='form-control' placeholder='Enter Your First Name'/>
         <label className='mt-3'>Last Name:</label>
@@ -20,6 +28,7 @@ const Register = () => {
         <input type="password" className='form-control' placeholder='Enter Your Password'/>
         <label className='mt-3'>Re-enter your password:</label>
         <input type="password" className='form-control' placeholder='Enter Your Password'/>
+        <button type="button" className='btn btn-dark mt-3 w-100'>Create account</button>
       </form>
     
     </div>
@@ -28,3 +37,9 @@ const Register = () => {
 }
 
 export default Register
+
+
+//Make UI complete 
+//Make a state to save value of each input temporarily 
+//change everytime we write something 
+//submmit
