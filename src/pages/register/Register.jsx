@@ -143,6 +143,31 @@ const Register = () => {
       setFirstNameError('Firstname is Required')
       isValid = false;
     }
+ 
+    if(lastName.trim() === ''){
+      setLastNameError('lastName is Required')
+      isValid = false;
+    }
+ 
+    if(email.trim() === ''){
+      setEmailError('Email is Required')
+      isValid = false;
+    }
+
+    if(password.trim() === ''){
+      setPasswordError('Password is Required')
+      isValid = false;
+    }
+    if(confirmPassword.trim() === ''){
+      setConfirmPasswordError('Confirm Password is Required')
+      isValid = false;
+    }
+    
+    if(password.trim()!==confirmPassword.trim()){
+      setConfirmPasswordError('Passwotd does not match')
+      isValid=false;
+    }
+
 
     return isValid;
     
@@ -176,16 +201,24 @@ const Register = () => {
               }
              <label className='mt-2'>Lastname</label>
              <input onChange={handleLastname} type="text" className='form-control' placeholder='Enter your lastname' />
-
+             {
+                lastNameError && <p className='text-danger'>{lastNameError}</p>
+              }
              <label className='mt-2'>Email Address</label>
              <input onChange={handleEmail} type="email" className='form-control' placeholder='Enter your email address' />
-
+             {
+                emailError && <p className='text-danger'>{emailError}</p>
+              }
              <label className='mt-2'>Password</label>
              <input onChange={handlePassword} type="text" className='form-control' placeholder='Enter your password' />
-
+             {
+                passwordError && <p className='text-danger'>{passwordError}</p>
+              }
              <label className='mt-2'>Confirm Password</label>
              <input onChange={handleConfirmPassword} type="text" className='form-control' placeholder='Enter your confirm password' />
-
+             {
+                confirmPasswordError && <p className='text-danger'>{confirmPasswordError}</p>
+              }
               <button onClick={handleSubmit} className='btn btn-dark mt-2 w-100'>Create Account</button>
 
 
