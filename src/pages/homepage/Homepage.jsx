@@ -16,10 +16,12 @@
 
 //Using Rafce
 
-import React from 'react'
+import React,{useEffect} from 'react'
 
 
 const Homepage = () => {
+  //Print Hello after page load,Automatic 
+  useEffect(()=>{console.log("Hello")})
   return (
     <div>
       <h1>
