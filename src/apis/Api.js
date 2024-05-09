@@ -10,6 +10,6 @@ const Api =axios.create({
 });
 
 //creating test API
-export const testApi=Api.get("/test")
+export const testApi=()=>Api.get("/test")
 //http://localhost:5001/test
 
