@@ -1,5 +1,5 @@
 import axios from "axios";
-import Register from "../pages/register/Register";
+
 
 // creating an instance of azios 
 const Api =axios.create({

@@ -96,6 +96,7 @@
 
 import React, {useState} from 'react'
 import { registerUserAPi } from '../../apis/Api'
+import { toast } from 'react-toastify'
 
 const Register = () => {
   // Coding Section
@@ -196,7 +197,13 @@ const Register = () => {
     
    // Making API requests
   registerUserAPi(data).then((res)=>{
-    console.log('data added!!')
+    //Sucess :true/false , message
+    if(res.data.success===false){
+      toast.error(res.data.message)
+    }
+    else{
+      toast.success(res.data.message)
+    }
   })
 
 
