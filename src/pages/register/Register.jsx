@@ -95,6 +95,7 @@
 // //submmit
 
 import React, {useState} from 'react'
+import { registerUserAPi } from '../../apis/Api'
 
 const Register = () => {
   // Coding Section
@@ -184,7 +185,21 @@ const Register = () => {
       return;
     }
 
-    console.log(firstName, lastName, email, password, confirmPassword)
+    
+    //Making JSON object of register data
+    const data={
+      "firstName":firstName,
+      "lastName": lastName,
+      "email": email,
+      "password": password
+    }
+    
+   // Making API requests
+  registerUserAPi(data).then((res)=>{
+    console.log('data added!!')
+  })
+
+
   }
 
   return (

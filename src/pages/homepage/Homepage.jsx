@@ -17,7 +17,7 @@
 //Using Rafce
 
 import React,{useEffect} from 'react'
-import { testApi } from '../../apis/Api'
+import { testApi, testApi_new } from '../../apis/Api'
 
 
 const Homepage = () => {
@@ -27,7 +27,10 @@ useEffect(()=> {
   console.log("Hello")
   testApi().then((res)=>{
       console.log(res)
-    })
+    });
+    testApi_new().then((res)=>{
+      console.log(res)
+  })
 })
     //calling test API 
     // testApi().then((res)=>{
