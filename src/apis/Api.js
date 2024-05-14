@@ -17,3 +17,5 @@ export const testApi_new=()=>Api.get("/test_new")
 
 //creating register API
 export const registerUserAPi=(data)=>Api.post('/api/user/create',data)
+
+export const loginUserAPi=(data)=>Api.post('/api/login',data)
