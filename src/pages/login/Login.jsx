@@ -39,7 +39,7 @@ const handleSubmit = (e) => {
 
   const data = {
     email: email,
-    password: password
+    password: password   
   };
 
   // Making API requests
