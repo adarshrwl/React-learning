@@ -18,6 +18,11 @@ const AdminDashboard = () => {
     SetProductImage(file);
     SetPreviewImage(URL.createObjectURL(file));
   };
+  //handle submmit 
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(productName,productPrice,productCategory,productDescription,productImage)
+  }
 
   return (
     <>
@@ -95,9 +100,10 @@ const AdminDashboard = () => {
                     {/* preview image */}
                     {previewImage && (
                       <div>
-                        <img src={previewImage} alt="" />
+                        <img src={previewImage} alt="preview-image" className="img-fluid rounded object-fit-cover mt-3" />
+                     
                       </div>
-                    )}
+                    )}  
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -108,7 +114,7 @@ const AdminDashboard = () => {
                   >
                     Close
                   </button>
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" class="btn btn-primary" onClick={handleSubmit}>
                     Save changes
                   </button>
                 </div>
