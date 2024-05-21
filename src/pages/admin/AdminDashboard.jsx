@@ -1,12 +1,24 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
 const AdminDashboard = () => {
-    //Making a state for product 
-    const[productName,SetProductName]=useState("")
-    const[productPrice,SetProductPrice]=useState("")
-    const[productCategory,SetProductCategory]=useState("")
-    const[productDescription,SetProductDescription]=useState("")
-    const[productImage,SetProductImage]=useState("")
+  //Making a state for product
+  const [productName, SetProductName] = useState("");
+  const [productPrice, SetProductPrice] = useState("");
+  const [productCategory, SetProductCategory] = useState("");
+  const [productDescription, SetProductDescription] = useState("");
+
+  //image state
+  const [productImage, SetProductImage] = useState(null);
+  const [previewImage, SetPreviewImage] = useState(null);
+
+  //function to upload abd preview image
+  const handleImageUpload = (event) => {
+    //0-file 1-name 2-size
+    const file = event.target.files[0];
+    SetProductImage(file);
+    SetPreviewImage(URL.createObjectURL(file));
+  };
+
   return (
     <>
       <div className="container">
@@ -43,38 +55,49 @@ const AdminDashboard = () => {
                 </div>
                 <div class="modal-body">
                   <form action="">
-                  onChange={(e)=>SetProductName(e.target.value)}
+                    onChange={(e) => SetProductName(e.target.value)}
                     <label>Product Name</label>
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Enter Product Name"
                     />
-
                     <label>Product Price</label>
                     <input
-                    onChange={(e)=>SetProductPrice(e.target.value)}
+                      onChange={(e) => SetProductPrice(e.target.value)}
                       type="number"
                       className="form-control"
                       placeholder="Enter Product Price"
                     />
-
                     <div className="mt-2">
-                    
                       <label>Select Category</label>
-                      <select className="form-control"
-                      onChange={(e)=>SetProductCategory(e.target.value)}
+                      <select
+                        className="form-control"
+                        onChange={(e) => SetProductCategory(e.target.value)}
                       >
                         <option value="action">Action Movies</option>
                         <option value="love">Love Movies</option>
                         <option value="romance">Romance Movies</option>
                       </select>
                     </div>
-
                     <label className="mt-2">Type Product descriprion</label>
-                    <textarea id="" className="form-control" onChange={(e)=>SetProductDescription(e.target.value)}></textarea>
+                    <textarea
+                      id=""
+                      className="form-control"
+                      onChange={(e) => SetProductDescription(e.target.value)}
+                    ></textarea>
                     <label className="mt-2">Product Image</label>
-                    <input type="file" className="form-control" />
+                    <input
+                      type="file"
+                      className="form-control"
+                      onChange={handleImageUpload}
+                    />
+                    {/* preview image */}
+                    {previewImage && (
+                      <div>
+                        <img src={previewImage} alt="" />
+                      </div>
+                    )}
                   </form>
                 </div>
                 <div class="modal-footer">
