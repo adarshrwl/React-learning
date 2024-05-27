@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { createProductApi } from "../../apis/Api";
+import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
   //Making a state for product
@@ -22,6 +24,37 @@ const AdminDashboard = () => {
   const handleSubmit=(e)=>{
     e.preventDefault()
     console.log(productName,productPrice,productCategory,productDescription,productImage)
+    
+    //Make a logical form data
+    const formData=new FormData()
+    formData.append('productName',productName)
+    formData.append('productPrice',productPrice)
+    formData.append('productCategory',productCategory)
+    formData.append('productDescription',productDescription)
+    formData.append('productImage',productImage)
+  
+
+    //Make a api call/request
+    createProductApi(formData).then((res)=>{
+      if(res.status ===201){
+        toast.success(res.data.message)
+      }else{
+        toast.error("Something Went wrong in frontend")
+      }
+    }).catch((error)=>{
+      if(error.response){
+        if(error.response.status===400){
+          toast.error(error.response.data.message)
+        }
+        // space for 401 error
+      }else if(error.response.status===500){
+        toast.error("Internal Server Error")
+      }else{
+        toast.error("No response")
+      }
+
+
+    })
   }
 
   return (
@@ -60,12 +93,13 @@ const AdminDashboard = () => {
                 </div>
                 <div class="modal-body">
                   <form action="">
-                    onChange={(e) => SetProductName(e.target.value)}
+                    
                     <label>Product Name</label>
                     <input
+                    onChange={(e) => SetProductName(e.target.value)}
                       type="text"
                       className="form-control"
-                      placeholder="Enter Product Name"
+                      placeholder="Product Name"
                     />
                     <label>Product Price</label>
                     <input
