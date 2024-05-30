@@ -1,26 +1,25 @@
-import React, { useState,useEffect } from "react";
-import { createProductApi, getAllProduct,} from "../../apis/Api";
+import React, { useState, useEffect } from "react";
+import { createProductApi, getAllProduct } from "../../apis/Api";
 import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
   //logic for get product
-  const[product,setProducts]=useState([])
+  const [product, setProducts] = useState([]);
   //Hit API(get all products) Auto-> useEffect(list of Product)
-  useEffect(()=>{
-    getAllProduct((res)=>{
-      //logic to get all products
-      setProducts(res.data.product)
+  useEffect(() => {
+    getAllProduct()
+      .then((res) => {
+        //logic to get all products
+        setProducts(res.data.products);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-    }).catch((error)=>{
-      console.log(error)
-    })
-
-    console.log(product)
-
-  },[])
+    console.log(product);
+  }, []);
   //Make an array to show the products
   //Table row (pn,pp,pd)
-
 
   // Making a state for product
   const [productName, SetProductName] = useState("");
@@ -136,10 +135,9 @@ const AdminDashboard = () => {
                       <select
                         className="form-control"
                         onChange={(e) => {
-                          console.log("Category selected:", e.target.value); 
+                          console.log("Category selected:", e.target.value);
                           SetProductCategory(e.target.value);
                         }}
-                        
                       >
                         <option value="action">Action Movies</option>
                         <option value="love">Love Movies</option>
@@ -203,7 +201,7 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="table-light">
+            {/* <tr className="table-light">
               <td>
                 <img
                   height={"100px"}
@@ -222,7 +220,29 @@ const AdminDashboard = () => {
                   <button className="btn btn-danger">Delete</button>
                 </div>
               </td>
-            </tr>
+            </tr> */}
+            {product.map((singleProduct) => (
+              <tr className="table-light">
+                <td>
+                  <img
+                    height={"100px"}
+                    width={"160px"}
+                    src="https://th.bing.com/th/id/OIP.LhgZOlbBt3HF8BSN2dbokQHaEf?rs=1&pid=ImgDetMain"
+                    alt=""
+                  />
+                </td>
+                <td>{singleProduct.productName}</td>
+                <td>{singleProduct.productPrice}</td>
+                <td>{singleProduct.productCategory}</td>
+                <td>{singleProduct.productDescription}</td>
+                <td>
+                  <div className="btn-group " role="group">
+                    <button className="btn btn-success">Edit</button>
+                    <button className="btn btn-danger">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -231,3 +251,7 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
+//products(Array)[{pp1,pn1},{pp2,pn2}]
+//Array Maping(Table)
+// products()
