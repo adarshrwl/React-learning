@@ -27,3 +27,6 @@ export const loginUserAPi=(data)=>Api.post('/api/user/login',data)
 
 //creating product API
 export const createProductApi=(data)=> Api.post('/api/product/create',data)
+
+//get all products
+export const getAllProduct=Api.get('/api/product/get_all_products');

@@ -1,8 +1,27 @@
-import React, { useState } from "react";
-import { createProductApi } from "../../apis/Api";
+import React, { useState,useEffect } from "react";
+import { createProductApi, getAllProduct,} from "../../apis/Api";
 import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
+  //logic for get product
+  const[product,setProducts]=useState([])
+  //Hit API(get all products) Auto-> useEffect(list of Product)
+  useEffect(()=>{
+    getAllProduct((res)=>{
+      //logic to get all products
+      setProducts(res.data.product)
+
+    }).catch((error)=>{
+      console.log(error)
+    })
+
+    console.log(product)
+
+  },[])
+  //Make an array to show the products
+  //Table row (pn,pp,pd)
+
+
   // Making a state for product
   const [productName, SetProductName] = useState("");
   const [productPrice, SetProductPrice] = useState("");
