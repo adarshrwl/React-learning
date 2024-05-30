@@ -227,7 +227,7 @@ const AdminDashboard = () => {
                   <img
                     height={"100px"}
                     width={"160px"}
-                    src="https://th.bing.com/th/id/OIP.LhgZOlbBt3HF8BSN2dbokQHaEf?rs=1&pid=ImgDetMain"
+                    src={`http://localhost:5000/products/${singleProduct.productImage}`}
                     alt=""
                   />
                 </td>
