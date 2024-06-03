@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminUpdateProduct from "./pages/admin/AdminUpdateProduct";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
         {/* Admin Routes */}
         <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
+        <Route path="/admin/update/:id" element={<AdminUpdateProduct />}/>
       </Routes>
     </Router>
   );

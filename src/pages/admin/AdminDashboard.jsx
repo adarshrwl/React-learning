@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createProductApi, getAllProduct } from "../../apis/Api";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   //logic for get product
@@ -237,7 +238,7 @@ const AdminDashboard = () => {
                 <td>{singleProduct.productDescription}</td>
                 <td>
                   <div className="btn-group " role="group">
-                    <button className="btn btn-success">Edit</button>
+                    <Link to={`/admin/update/${singleProduct._id}`} className="btn btn-success">Edit</Link>
                     <button className="btn btn-danger">Delete</button>
                   </div>
                 </td>
@@ -255,3 +256,14 @@ export default AdminDashboard;
 //products(Array)[{pp1,pn1},{pp2,pn2}]
 //Array Maping(Table)
 // products()
+
+
+//New page (update product)
+//Form(Required field) npdc old image new image
+//use state 7-
+// Fill the previous values
+// -call the API(single product)
+// 5. Backend
+// 5.2 - Based on _id(Admin Dashboard)
+//transport '_id' to update product
+// Recieve with update product
